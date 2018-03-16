@@ -39,17 +39,17 @@ function help(){
 
 function pushGit(){
 	echo -e $amarillo"Ejecutando push "$rescolor
-	echo -e $azul"_"$magenta"________________________"$azul"_"$rescolor
-	echo -e $azul"|"$magenta"                        "$azul"|"$rescolor
-	echo -e $azul"|"$magenta" Tus Repositorio Remoto "$azul"|"$rescolor
-	echo -e $azul" "$verde"    "$(git remote )"    "$azul" "$rescolor
-	echo -e $azul"|"$magenta"                        "$azul"|"$rescolor
-	echo -e $azul"-"$magenta"________________________"$azul"-"$rescolor
+	echo -e $azul"_"$magenta"__________________________________"$azul"_"$rescolor
+	echo -e $azul"|"$magenta"                                  "$azul"|"$rescolor
+	echo -e $azul"|"$magenta"      Tus Repositorio Remoto      "$azul"|"$rescolor
+	echo -e $azul" "$verde"    "$(git remote )$rescolor
+	echo -e $azul"|"$magenta"                                  "$azul"|"$rescolor
+	echo -e $azul"-"$magenta"__________________________________"$azul"-"$rescolor
 
-	echo -e "Ingresar tu romote -->"
+	echo -n "Ingresar tu romote -->"
 	read RP
 	git push $RP
-	echo -e $verde"HECHO..."$rescolor
+	echo -e $verde"OK..."$rescolor
 }
 
 function statusGit(){
@@ -61,7 +61,7 @@ function commitGit(){
 	echo -n "      #> "
 	read MSG
 	git commit -m "$MSG"
-	echo -e $verde"HECHO..."$rescolor
+	echo -e $verde"OK..."$rescolor
 }
 
 function addGit(){
@@ -78,7 +78,7 @@ function addGit(){
 		case $yn in
 			1 ) 
 				git add .
-				echo -e $verde"HECHO..."$rescolor
+				echo -e $verde"OK..."$rescolor
 				break ;;
 			2 ) 			
 				addSelectGit			
