@@ -38,9 +38,17 @@ function help(){
 
 
 function pushGit(){
-	echo -e $amarillo" Ejecutando push remote $( git remote )"$rescolor
-	RP="$(git remote)"
-	git push "$RP"
+	echo -e $amarillo"Ejecutando push "$rescolor
+	echo -e $azul"_"$magenta"________________________"$azul"_"$rescolor
+	echo -e $azul"|"$magenta"                        "$azul"|"$rescolor
+	echo -e $azul"|"$magenta" Tus Repositorio Remoto "$azul"|"$rescolor
+	echo -e $azul" "$verde"    "$(git remote )"    "$azul" "$rescolor
+	echo -e $azul"|"$magenta"                        "$azul"|"$rescolor
+	echo -e $azul"-"$magenta"________________________"$azul"-"$rescolor
+
+	echo -e "Ingresar tu romote -->"
+	read RP
+	git push $RP
 	echo -e $verde"HECHO..."$rescolor
 }
 
