@@ -180,13 +180,15 @@ function installNodeJs(){
 	VERSION='v8.9.4'
 	if ! [ -d $HOME/.nvm ]; then
 	    bash -ic "bash $PWD/lib/install_nvm.sh"
+	    bash -ic "sudo bash $PWD/lib/install_nvm.sh"
+	    source $HOME/.bashrc
+	    sudo chmod a+x+w+r -R $HOME/.nvm
 		installNodeJs
 	else	
 		if ! [ -d $HOME'/.nvm/versions/node/'$VERSION ] ; then
 	    	echo -e $verde"Instalando nueva Version node-"$VERSION"-linux-x64"$rescolor
-	    	source $HOME/.bashrc
-	    	sudo chmod a+x+w+r -R $HOME/.nvm
 	    	bash -ic "nvm install $VERSION && nvm ls"
+	    	bash -ic "sudo nvm install $VERSION && nvm ls"
 	    	echo -e $verde"HECHO..."$rescolor
 	    	echo -e $amarillo"cerrar y abrir la terminal"$rescolor
 	    else 
