@@ -58,6 +58,7 @@ while true; do
 		    	installSublimeText
 		    #	installVisualStudioCode
 		    	installNodeJs
+			installIonic
 			break;;
 			"install gedit" ) installgedit
 			break;;
@@ -66,6 +67,8 @@ while true; do
 			"install heroku" ) installHeroku
 			break;;
 			"install node" ) installNodeJs
+			break;;
+			"install ionic" ) installIonic
 			break;;
 			"install postgresql" ) installPostgreSQL
 			break;;
@@ -117,6 +120,7 @@ function help(){
 	echo -e "	|	gedit 			* Herranienta Gedit"$rescolor
 	echo -e "	|	heroku 			* Herranienta Heroku"$rescolor
 	echo -e "	|	node 			* Herranienta Node"$rescolor
+	echo -e "	|	ionic 			* Herranienta Ionic"$rescolor
 	echo -e "	|	pgadmin3 		* Herranienta Pgadmin3"$rescolor
 	echo -e "	|	postgresql 		* Herranienta PostgreSql"$rescolor
 	echo -e "	|	webstorm 		* Herranienta WebStorm"$rescolor
@@ -175,22 +179,27 @@ function upgradeSystem(){
 	sleep 0.1
 }
 
+function installIonic(){
+	npm install -g ionic cordova
+}
+
 function installNodeJs(){
 	PKG='nodejs'
 	VERSION='v8.9.4'
 	if ! [ -d $HOME/.nvm ]; then
 	    bash -ic "bash $PWD/lib/install_nvm.sh"
-	    bash -ic "sudo bash $PWD/lib/install_nvm.sh"
+	    if ! [ -d $HOME'/.nvm/versions/node/'$VERSION ] ; then
+	    	bash -ic "sudo bash $PWD/lib/install_nvm.sh"
+	    fi
 	    installNodeJs
 	else	
-		sudo chmod a+x+w+r -R $HOME/.nvm
-		source $HOME/.bashrc
 		if ! [ -d $HOME'/.nvm/versions/node/'$VERSION ] ; then
 	    	echo -e $verde"Instalando nueva Version node-"$VERSION"-linux-x64"$rescolor
-	    	bash -ic "nvm install $VERSION && nvm ls"
-	    	bash -ic "sudo nvm install $VERSION && nvm ls"
+	    	bash -ic "source $HOME/.bashrc && sudo nvm install $VERSION && sudo chmod a+x+w+r -R $HOME/.nvm && nvm ls "
 	    	echo -e $verde"HECHO..."$rescolor
-	    	echo -e $amarillo"cerrar y abrir la terminal"$rescolor
+	    	echo -e $rojo"CERRAR Y ABRIR LA TERMINAL"$rescolor
+		echo -n "Presione una tecla para continuar -->"
+		read e;
 	    else 
 	    	echo -e $PKG$verde" Esta Instalado?................SI"$rescolor""
 		fi
