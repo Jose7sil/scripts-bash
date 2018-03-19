@@ -8,7 +8,7 @@
     "build-tooldev": "bash build/build-tooldev.sh",
     "reset-tooldev": "sudo rm /bin/run-tooldev && sudo rm -R /usr/share/tooldev",
     "deploy-tooldev": "npm run build-tooldev && bash gitmanager/git-manager.sh start",
-    "test-sascha": "npm run build-sascha && run-sascha init",
+    "test-sascha": "npm run build-sascha && run-sascha",
     "build-sascha": "bash build/build-sascha.sh",
     "reset-sascha": "sudo rm /bin/sascha && sudo rm -R /usr/share/sascha",
     "resetest-sascha": "sudo rm /bin/run-sascha && sudo rm -R /usr/share/sascha",

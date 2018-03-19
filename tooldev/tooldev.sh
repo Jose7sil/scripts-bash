@@ -180,7 +180,7 @@ function upgradeSystem(){
 }
 
 function installIonic(){
-	npm install -g ionic cordova
+	bash -ic "npm install -g ionic cordova"
 }
 
 function installNodeJs(){
